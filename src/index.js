@@ -1,26 +1,25 @@
 
 $(document).ready(function(){
-  var captionList = new CaptionList
   var urlList = new addUrl
+  var captionList = new CaptionList
 
   $('#photo-form').submit(function(event) {
     event.preventDefault()
-    var input = $('#image_url').val()
+
+    var input = $('#urlInput').val()
     urlList.addLink(input)
-    var html = urlList.render()
-    console.log(html)
-    $('#div').html("<a href= input></a>").then(function(event) {
-      event.preventDefault()
+
+    var html1 = urlList.render()
+    // debugger
+    console.log(html1)
+
+    $('#photo-list').append(`<img src=${input}></img>`)
       // debugger
-      var caption = $('#captionText').val()
+      var caption = $('#captionInput').val()
+
       captionList.addCaption(caption)
       var html = captionList.render()
-
       console.log(html)
-      $('#photo-list').html(html)
+      $('#photo-list').append(html)
     })
   })
-
-
-
-})
